@@ -24,6 +24,11 @@ const userSchema = new Schema({
     type: Number,
     trim: true,
   },
+  isAdmin: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
 //generate token
 

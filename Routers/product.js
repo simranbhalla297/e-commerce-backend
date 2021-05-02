@@ -78,23 +78,11 @@ router.post("/product/:id", async (req, res) => {
 //@desc delete product
 //@access private
 router.delete("/product/:id", async (req, res) => {
-  const product = await Product.findById(req.params.id);
   const id = req.params.id;
-  //look upthe product with the given id
-  //if not exist then return 404 erroe
-  if (!product) {
-    return res.status(404).json({
-      success: false,
-      message: "product not found",
-    });
-  }
-  //delete product from database
+  console.log(id);
   try {
-    product.deleteOne({ _id: id }).then((data) => {
-      res.json({
-        msg: "product deleted",
-        data,
-      });
+    Product.deleteOne({ _id: id }).then((data) => {
+      res.json(data);
     });
   } catch (error) {
     console.log(error);

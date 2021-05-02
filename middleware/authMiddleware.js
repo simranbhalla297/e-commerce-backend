@@ -18,4 +18,5 @@ function authMiddleware(req, res, next) {
     res.status(400).json({ msg: "token is not valid" });
   }
 }
+
 module.exports = authMiddleware;

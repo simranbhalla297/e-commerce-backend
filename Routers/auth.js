@@ -27,7 +27,7 @@ router.post("/login", async (req, res) => {
     if (!ispassSame) throw Error("Invalid credentials,password not matching");
 
     const token = jwt.sign({ id: user._id }, "yhgtgyghtghuyghhyhyhygrfgtyhgt", {
-      expiresIn: 3600,
+      //expiresIn:3600 ,
     });
     if (!token) throw Error("Couldnt sign the token");
 
@@ -37,6 +37,7 @@ router.post("/login", async (req, res) => {
         id: user._id,
         email: user.email,
         name: user.firstname,
+        isAdmin: user.isAdmin,
       },
     });
   } catch (e) {
@@ -55,6 +56,7 @@ router.post("/register", async (req, res) => {
     address: req.body.address,
     password: req.body.password,
     image: req.body.image,
+    isAdmin: req.body.isAdmin,
   };
   // Simple validation
   if (!userDetail.firstname || !userDetail.lastname || !userDetail.email) {
@@ -89,6 +91,7 @@ router.post("/register", async (req, res) => {
                   firstname: userDetail.firstname,
                   lastname: userDetail.lastname,
                   email: userDetail.email,
+                  isAdmin: userDetail.isAdmin,
                 },
               });
             }
