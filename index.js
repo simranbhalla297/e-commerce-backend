@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = process.env.port || 5000;
+const serverPort = process.env.PORT || 5000;
 var login = require("./Routers/auth");
 var product = require("./Routers/product");
 var category = require("./Routers/category");
@@ -31,6 +31,6 @@ app.use("/review", review);
 app.use("/cartItem", cartItem);
 app.use("/favItem", FavItem);
 app.use("/banner", banner);
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+app.listen(serverPort, () => {
+  console.log(`Example app listening at http://localhost:${serverPort}`);
 });
