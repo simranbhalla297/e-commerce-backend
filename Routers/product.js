@@ -18,7 +18,12 @@ router.post("/product", async (req, res) => {
 //@access public
 router.post("/products", async (req, res) => {
   var filter = {};
+  //var sortObj={}
+
   var sortObj = { [req.body.sortBy]: -1 }; //-1= descending
+  if (req.body.sortBy === "price-low") {
+    sortObj = { price: 1 };
+  }
   console.log(sortObj);
   if (req.body.categoryId) {
     filter.categoryId = req.body.categoryId;
